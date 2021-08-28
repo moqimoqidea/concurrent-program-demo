@@ -1,6 +1,5 @@
 package com.concurrent.program.random;
 
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
