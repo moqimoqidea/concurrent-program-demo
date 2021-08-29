@@ -47,20 +47,3 @@ AQS知道什么东东了，然后锁的话肯定是先看最简单的独占锁Re
 等等，有实践？当然要有，虽然Java并发编程内容很广，但是还是有一些规则可以遵循的，比如线程，线程池创建时候要指定名称以便排查问题，线程池使用完毕记得关闭，ThreadLocal使用完毕记得调用remove清理，SimpleDateFormat是线程不安全的等等。
 
 如果你对上面内容感兴趣，并且对学并发无从下手，那么机会来了，《Java并发编程之美》这本书，就是按照这个思路来编写的，并且该书在京东上被列为10大精选书籍之一
-
-
-
-## 资源和勘误
-大家可以到https://github.com/zhailuxu/concurrent-program-demo 下载本书的demo资源，另外由于笔者水平有限，如果您在阅读本书时候发现错误，可以关注微信公众号：技术原始积累 ，留言反馈。
-
-##  购买
- - [京东](https://item.jd.com/12450812.html)
- 
-## 更多新书，关注下面微信公众号
- 
- 
-![image]( https://zhailuxu.github.io/assets/images/jiaduowechat.png)
-
-
-##  我的网站
-https://zhailuxu.github.io/
