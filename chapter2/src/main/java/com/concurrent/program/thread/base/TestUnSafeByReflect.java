@@ -36,7 +36,8 @@ public class TestUnSafeByReflect {
 
     }
 
-    private final long state = 0;
+    @SuppressWarnings("FieldMayBeFinal")
+    private volatile long state = 0;
 
     /**
      * stateOffset = 16
@@ -44,8 +45,9 @@ public class TestUnSafeByReflect {
      */
     public static void main(String[] args) {
         TestUnSafeByReflect test = new TestUnSafeByReflect();
-        Boolean success = unsafe.compareAndSwapInt(test, stateOffset, 0, 1);
+        Boolean success = unsafe.compareAndSwapInt(test, stateOffset, 0, 100);
         System.out.println(success);
+        System.out.println("test.state = " + test.state);
     }
 
 }
