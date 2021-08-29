@@ -12,8 +12,7 @@ public class DeamonThread {
      * hello, I am running.
      * hello, I am running.
      * ....
-     *
-     *
+     * <p>
      * daemonThread.setDaemon(true);
      * nothing show
      */
@@ -31,7 +30,7 @@ public class DeamonThread {
         });
 
         // 2.设置为守护线程，并启动
-//        daemonThread.setDaemon(true);
+        // daemonThread.setDaemon(true);
         daemonThread.start();
     }
 
