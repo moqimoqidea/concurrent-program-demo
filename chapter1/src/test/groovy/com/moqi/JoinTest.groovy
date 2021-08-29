@@ -48,4 +48,47 @@ class JoinTest extends Specification {
         true
     }
 
+    // 线程A调用线程B的join方法后会被阻塞，
+    // 当其他线程调用了线程A的interrupt（）方法中断了线程A时，
+    // 线程A会抛出InterruptedException异常而返回。
+    def "join with interrupted"() {
+        when:
+        //1.线程one,模拟任务
+        Thread threadOne = new Thread(() -> {
+            log.info("threadOne begin run!")
+            while (true) {
+            }
+        })
+
+        //2.获取主线程
+        final Thread mainThread = Thread.currentThread();
+
+        //3.线程two 模拟中断主线程
+        Thread threadTwo = new Thread(() -> {
+            //休眠1s
+            try {
+                TimeUnit.SECONDS.sleep(1)
+            } catch (InterruptedException e) {
+                e.printStackTrace()
+            }
+            //中断主线程
+            mainThread.interrupt()
+        })
+
+        //4. 启动子线程
+        threadOne.start()
+        //延迟1s启动线程
+        threadTwo.start()
+
+        //5. 等待线程one执行完毕
+        try {
+            threadOne.join()
+        } catch (InterruptedException e) {
+            log.warn("main thread: " + e)
+        }
+
+        then:
+        true
+    }
+
 }
