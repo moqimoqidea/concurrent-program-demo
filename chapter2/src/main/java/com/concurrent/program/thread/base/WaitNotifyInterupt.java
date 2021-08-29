@@ -1,8 +1,7 @@
 package com.concurrent.program.thread.base;
 
 /**
- * @author 加多，微信公众号：技术原始积累
- * Created on 2020-08-29
+ *  * Created on 2020-08-29
  * 当一个线程调用共享对象的wait()方法被阻塞挂起后，如果其它线程中断了该线程，则该线程会抛出InterruptedException异常后返回
  */
 public class WaitNotifyInterupt {

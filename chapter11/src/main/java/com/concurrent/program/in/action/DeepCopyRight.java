@@ -11,8 +11,7 @@ import org.apache.commons.beanutils.BeanUtils;
 import com.alibaba.fastjson.JSON;
 
 /**
- * @author 加多，微信公众号：技术原始积累
- * Created on 2020-08-29
+ *  * Created on 2020-08-29
  */
 public class DeepCopyRight {
 

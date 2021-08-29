@@ -5,8 +5,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 
 /**
- * @author 加多，微信公众号：技术原始积累
- * Created on 2020-08-29
+ *  * Created on 2020-08-29
  */
 public class SemaphoreTest {
     // 创建一个Semaphore实例

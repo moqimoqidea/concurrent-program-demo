@@ -3,8 +3,7 @@ package com.concurrent.program.lock;
 import java.util.concurrent.locks.StampedLock;
 
 /**
- * @author 加多，微信公众号：技术原始积累
- * Created on 2020-08-29
+ *  * Created on 2020-08-29
  */
 public class Point {
 

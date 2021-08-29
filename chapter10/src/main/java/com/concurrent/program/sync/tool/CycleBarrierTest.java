@@ -5,8 +5,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * @author 加多，微信公众号：技术原始积累
- * Created on 2020-08-29
+ *  * Created on 2020-08-29
  */
 public class CycleBarrierTest {
     // 创建一个CyclicBarrier实例,添加一个所有子线程全部到达屏障后执行的一个任务
