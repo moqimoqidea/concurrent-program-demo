@@ -4,17 +4,22 @@ package com.concurrent.program.thread.base;
  * Created on 2020-08-29
  */
 public class InterruptFlagTest {
-    public static void main(String[] args) throws InterruptedException {
 
+    /**
+     * isInterrupted:true
+     * isInterrupted:false
+     * isInterrupted:false
+     * isInterrupted:false
+     * java.lang.InterruptedException: sleep interrupted
+     */
+    public static void main(String[] args) throws InterruptedException {
         // 1.创建线程
-        Thread threadOne = new Thread(new Runnable() {
-            public void run() {
-                for (; ; ) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+        Thread threadOne = new Thread(() -> {
+            while (true) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         });
@@ -37,6 +42,6 @@ public class InterruptFlagTest {
         // 5.等待执行完毕
         threadOne.join();
         System.out.println("main thread is over");
-
     }
+
 }
