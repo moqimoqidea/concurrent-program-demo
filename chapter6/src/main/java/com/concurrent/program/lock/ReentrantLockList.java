@@ -8,9 +8,9 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class ReentrantLockList {
     // 线程不安全的list
-    private ArrayList<String> array = new ArrayList<String>();
+    private final ArrayList<String> array = new ArrayList<>();
     // 独占锁
-    private volatile ReentrantLock lock = new ReentrantLock();
+    private final ReentrantLock lock = new ReentrantLock();
 
     // 添加元素
     public void add(String e) {
