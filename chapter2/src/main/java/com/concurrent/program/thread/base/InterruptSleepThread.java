@@ -4,21 +4,20 @@ package com.concurrent.program.thread.base;
  * Created on 2020-08-29
  */
 public class InterruptSleepThread {
+
+    /**
+     * child thread is in sleep
+     * java.lang.InterruptedException: sleep interrupted
+     */
     public static void main(String[] args) throws InterruptedException {
-
         // 1.创建子线程,并休眠10s
-        Thread thread = new Thread(new Runnable() {
-            public void run() {
-
-                try {
-                    System.out.println("child thread is in sleep");
-
-                    Thread.sleep(10000);
-                    System.out.println("child thread is in awaked");
-
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+        Thread thread = new Thread(() -> {
+            try {
+                System.out.println("child thread is in sleep");
+                Thread.sleep(10000);
+                System.out.println("child thread is in awake");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         });
 

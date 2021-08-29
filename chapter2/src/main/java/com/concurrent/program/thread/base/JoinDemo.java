@@ -4,39 +4,38 @@ package com.concurrent.program.thread.base;
  * Created on 2020-08-29
  */
 public class JoinDemo {
+
+    /**
+     * wait all child thread over!
+     * child threadOne over!
+     * child threadTwo over!
+     * all child thread over!
+     */
     public static void main(String[] args) throws InterruptedException {
         // 1.创建线程1，模拟执行任务
-        Thread threadOne = new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-                System.out.println("child threadOne over!");
-
+        Thread threadOne = new Thread(() -> {
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
+
+            System.out.println("child threadOne over!");
+
         });
 
         // 2.创建线程2，模拟执行任务
-        Thread threadTwo = new Thread(new Runnable() {
+        Thread threadTwo = new Thread(() -> {
 
-            @Override
-            public void run() {
-
-                try {
-                    Thread.sleep(10000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-                System.out.println("child threadTwo over!");
-
-
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
+
+            System.out.println("child threadTwo over!");
+
+
         });
 
 

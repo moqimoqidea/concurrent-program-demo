@@ -9,7 +9,7 @@ import java.util.Random;
  */
 public class ProductConsumer {
     // 共享队列
-    private static Queue<Integer> queue = new LinkedList<>();
+    private static final Queue<Integer> queue = new LinkedList<>();
     private static final int MAX_SIZE = 10;
 
     private static void product() {
@@ -45,12 +45,18 @@ public class ProductConsumer {
             // 消费元素，并通知唤醒生产线程
             System.out.println(queue.poll());
             queue.notifyAll();
-
         }
     }
 
+    /**
+     * -964921756
+     * 575486188
+     * 899967157
+     * -805605244
+     * 362301092
+     * 241978955
+     */
     public static void main(String[] args) {
-
         // 1.生产线程，定时生产
         new Thread(() -> {
             for (; ; ) {
@@ -74,6 +80,5 @@ public class ProductConsumer {
 
         }).start();
     }
-
 
 }
