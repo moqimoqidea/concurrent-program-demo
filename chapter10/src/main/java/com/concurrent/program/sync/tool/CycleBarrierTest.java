@@ -17,7 +17,7 @@ public class CycleBarrierTest {
 
     public static void main(String[] args) throws InterruptedException {
 
-        //创建一个线程个数固定为2的线程池
+        // 创建一个线程个数固定为2的线程池
         ExecutorService executorService = Executors.newFixedThreadPool(2);
 
         // 加入线程A到线程池

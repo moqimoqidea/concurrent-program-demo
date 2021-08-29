@@ -15,7 +15,7 @@ public class JoinCountDownLatch2 {
 
         ExecutorService executorService = Executors.newFixedThreadPool(2);
 
-        //加入线程A到线程池
+        // 加入线程A到线程池
         executorService.submit(new  Runnable() {
             public void run() {
                 try {
@@ -28,7 +28,7 @@ public class JoinCountDownLatch2 {
             }
         });
 
-        //加入线程B到线程池
+        // 加入线程B到线程池
         executorService.submit(new  Runnable() {
             public void run() {
                 try {

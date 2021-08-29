@@ -27,7 +27,7 @@ public class SemaphoreTest {
             }
         });
 
-        //加入任务B到线程池
+        // 加入任务B到线程池
         executorService.submit(new Runnable() {
             public void run() {
                 try {
@@ -44,7 +44,7 @@ public class SemaphoreTest {
         semaphore.acquire(2);
         System.out.println("all child thread over!");
 
-        //关闭线程池
+        // 关闭线程池
         executorService.shutdown();
     }
 }

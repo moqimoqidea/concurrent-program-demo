@@ -17,9 +17,9 @@ class NonReentrantLock implements Lock, java.io.Serializable {
             return getState() == 1;
         }
 
-        //如果state为0 则尝试获取锁
+        // 如果state为0 则尝试获取锁
         public boolean tryAcquire(int acquires) {
-            assert acquires == 1; //
+            assert acquires == 1; // 
             if (compareAndSetState(0, 1)) {
                 setExclusiveOwnerThread(Thread.currentThread());
                 return true;
@@ -29,7 +29,7 @@ class NonReentrantLock implements Lock, java.io.Serializable {
 
         // 尝试释放锁，设置state为0
         protected boolean tryRelease(int releases) {
-            assert releases == 1; //
+            assert releases == 1; // 
             if (getState() == 0) {
                 throw new IllegalMonitorStateException();
             }
@@ -45,7 +45,7 @@ class NonReentrantLock implements Lock, java.io.Serializable {
 
     }
 
-    //创建一个Sync来做具体的工作
+    // 创建一个Sync来做具体的工作
     private final Sync sync = new Sync();
 
     public void lock() {

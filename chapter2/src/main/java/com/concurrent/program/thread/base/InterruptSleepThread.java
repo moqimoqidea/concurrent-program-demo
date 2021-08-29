@@ -6,7 +6,7 @@ package com.concurrent.program.thread.base;
 public class InterruptSleepThread {
     public static void main(String[] args) throws InterruptedException {
 
-        //1.创建子线程,并休眠10s
+        // 1.创建子线程,并休眠10s
         Thread thread = new Thread(new Runnable() {
             public void run() {
 
@@ -22,13 +22,13 @@ public class InterruptSleepThread {
             }
         });
 
-        //2.启动线程
+        // 2.启动线程
         thread.start();
 
-        //3.主线程休眠2s
+        // 3.主线程休眠2s
         Thread.sleep(2000);
 
-        //4.主线程中断子线程
+        // 4.主线程中断子线程
         thread.interrupt();
     }
 

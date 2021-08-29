@@ -5,7 +5,7 @@ package com.concurrent.program.thread.base;
  */
 public class DeamonThread {
     public static void main(String[] args) {
-        //1.创建线程
+        // 1.创建线程
         Thread daemonThread = new Thread(new Runnable() {
             public void run() {
                 for (; ; ) {
@@ -14,8 +14,8 @@ public class DeamonThread {
             }
         });
 
-        //2.设置为守护线程，并启动
-        //daemonThread.setDaemon(true);
+        // 2.设置为守护线程，并启动
+        // daemonThread.setDaemon(true);
         daemonThread.start();
 
     }

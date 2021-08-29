@@ -11,18 +11,18 @@ public class HoldMonitorLockTest {
 
     public static void main(String[] args) throws InterruptedException {
 
-        //2. 创建线程A,获取两个资源的监视器锁
+        // 2. 创建线程A,获取两个资源的监视器锁
         Thread threadA = new Thread(new Runnable() {
             public void run() {
                 try {
 
-                    //2.1 获取resourceA共享资源的监视器锁
+                    // 2.1 获取resourceA共享资源的监视器锁
                     synchronized (resourceA) {
                         System.out.println("threadA get resourceA lock");
-                        //2.2 获取resourceB共享资源的监视器锁
+                        // 2.2 获取resourceB共享资源的监视器锁
                         synchronized (resourceB) {
                             System.out.println("threadA get resourceB lock");
-                            //2.3 线程A阻塞，并释放获取到的resourceA的锁
+                            // 2.3 线程A阻塞，并释放获取到的resourceA的锁
                             System.out.println("threadA release resourceA lock");
                             resourceA.wait();
                         }
@@ -33,19 +33,19 @@ public class HoldMonitorLockTest {
             }
         },"threadA");
 
-        //3. 创建线程，
+        // 3. 创建线程，
         Thread threadB = new Thread(new Runnable() {
             public void run() {
                 try {
 
-                    //3.1休眠1s，让线程A获取到资源B的锁
+                    // 3.1休眠1s，让线程A获取到资源B的锁
                     Thread.sleep(1000);
 
                     // 3.2获取resourceA共享资源的监视器锁
                     synchronized (resourceA) {
                         System.out.println("threadB get resourceA lock");
                         System.out.println("threadB try get resourceB lock...");
-                        //3.3 获取resourceB共享资源的监视器锁
+                        // 3.3 获取resourceB共享资源的监视器锁
                         synchronized (resourceB) {
                             System.out.println("threadB get resourceB lock");
                             // 线程B阻塞，并释放获取到的resourceA的锁
@@ -62,11 +62,11 @@ public class HoldMonitorLockTest {
             }
         },"threadB");
 
-        //4. 启动线程
+        // 4. 启动线程
         threadA.start();
         threadB.start();
 
-        //5. 等待两个线程结束
+        // 5. 等待两个线程结束
         threadA.join();
         threadB.join();
 

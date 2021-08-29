@@ -22,25 +22,25 @@ public class ProductAndConsumer {
             public void run() {
 
                 for (; ; ) {
-                    //获取独占锁
+                    // 获取独占锁
                     lock.lock();
                     try {
 
-                        //如果队列满了，则等待(1)
+                        // 如果队列满了，则等待(1)
                         while (queue.size() == queueSize) {
                             notEmpty.await();
                         }
 
-                        //添加元素到队列（2）
+                        // 添加元素到队列（2）
                         queue.add("ele");
 
-                        //唤醒消费线程（3）
+                        // 唤醒消费线程（3）
                         notFull.signalAll();
 
                     } catch (Exception e) {
                         e.printStackTrace();
                     } finally {
-                        //释放锁
+                        // 释放锁
                         lock.unlock();
                     }
                 }
@@ -50,24 +50,24 @@ public class ProductAndConsumer {
         Thread consumer = new Thread(new Runnable() {
             public void run() {
                 for (; ; ) {
-                    //获取独占锁
+                    // 获取独占锁
                     lock.lock();
                     try {
-                        //队列空，则等待
+                        // 队列空，则等待
                         while (0 == queue.size()) {
                             notFull.await();
                         }
 
-                        //消费一个元素
+                        // 消费一个元素
                         String ele = queue.poll();
                         System.out.println(ele);
-                        //唤醒生产线程
+                        // 唤醒生产线程
                         notEmpty.signalAll();
 
                     } catch (Exception e) {
                         e.printStackTrace();
                     } finally {
-                        //释放锁
+                        // 释放锁
                         lock.unlock();
                     }
                 }
@@ -75,7 +75,7 @@ public class ProductAndConsumer {
             }
         });
 
-        //启动线程
+        // 启动线程
         producer.start();
         consumer.start();
     }

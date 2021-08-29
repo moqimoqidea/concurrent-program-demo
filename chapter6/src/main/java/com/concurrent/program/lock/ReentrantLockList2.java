@@ -10,14 +10,14 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  */
 public class ReentrantLockList2 {
 
-    //线程不安全的list
+    // 线程不安全的list
     private ArrayList<String> array = new ArrayList<String>();
-    //独占锁
+    // 独占锁
     private final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
     private final Lock readLock = lock.readLock();
     private final Lock writeLock = lock.writeLock();
 
-    //添加元素
+    // 添加元素
     public void add(String e) {
 
         writeLock.lock();
@@ -30,7 +30,7 @@ public class ReentrantLockList2 {
         }
     }
 
-    //删元素
+    // 删元素
     public void remove(String e) {
 
         writeLock.lock();
@@ -43,7 +43,7 @@ public class ReentrantLockList2 {
         }
     }
 
-    //获取数据
+    // 获取数据
     public String get(int index) {
 
         readLock.lock();

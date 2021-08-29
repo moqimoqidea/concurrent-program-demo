@@ -23,7 +23,7 @@ public class YieldTest implements Runnable {
      * Thread[Thread-2,5,main] is over
      */
     public static void main(String[] args) {
-        //创建并启动线程
+        // 创建并启动线程
         new Thread(new YieldTest()).start();
         new Thread(new YieldTest()).start();
         new Thread(new YieldTest()).start();
@@ -32,10 +32,10 @@ public class YieldTest implements Runnable {
     public void run() {
 
         for (int i = 0; i < 5; i++) {
-            //当i=0时候出让cpu执行权，放弃时间片，进行下一轮调度
+            // 当i=0时候出让cpu执行权，放弃时间片，进行下一轮调度
             if (i == 0) {
                 System.out.println(Thread.currentThread() + "yield cpu...");
-                //当前 出让cpu执行权，放弃时间片，进行下一轮调度
+                // 当前 出让cpu执行权，放弃时间片，进行下一轮调度
                 Thread.yield();
             }
         }

@@ -27,10 +27,10 @@ public class ThreadCreateMode {
     public static void callerTaskMode() {
         // 创建异步任务
         FutureTask<String> futureTask = new FutureTask<>(new CallerTask());
-        //启动线程
+        // 启动线程
         new Thread(futureTask).start();
         try {
-            //等待任务执行完毕，并返回结果
+            // 等待任务执行完毕，并返回结果
             String result = futureTask.get();
             System.out.println(result);
         } catch (Exception e) {
@@ -41,18 +41,18 @@ public class ThreadCreateMode {
 
     public static void main(String[] args) {
 
-        //1.Thread方式
+        // 1.Thread方式
         threadMode();
 
-        //2.Runnable方式
+        // 2.Runnable方式
         runnableMode();
 
-        //3.CallerTask
+        // 3.CallerTask
         callerTaskMode();
 
     }
 
-    //继承Thread类并重写run方法
+    // 继承Thread类并重写run方法
     public static class MyThread extends Thread {
 
         @Override

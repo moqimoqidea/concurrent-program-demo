@@ -4,16 +4,16 @@ package com.concurrent.program.thread.base;
  * Created on 2020-08-29
  */
 public class NotifyAllAndNotify {
-    //1. 创建共享资源
+    // 1. 创建共享资源
     private static volatile Object resourceA = new Object();
 
     public static void main(String[] args) throws InterruptedException {
 
-        //2. 创建线程A，模拟wait
+        // 2. 创建线程A，模拟wait
         Thread threadA = new Thread(new Runnable() {
             public void run() {
 
-                //2.1 获取resourceA共享资源的监视器锁
+                // 2.1 获取resourceA共享资源的监视器锁
                 synchronized (resourceA) {
                     System.out.println("threadA get resourceA lock");
                     try {
@@ -28,7 +28,7 @@ public class NotifyAllAndNotify {
             }
         });
 
-        //3. 创建线程B,模拟wait
+        // 3. 创建线程B,模拟wait
         Thread threadB = new Thread(new Runnable() {
             public void run() {
                 synchronized (resourceA) {
@@ -47,24 +47,24 @@ public class NotifyAllAndNotify {
 
         });
 
-        //3. 创建线程C,通知等待的线程
+        // 3. 创建线程C,通知等待的线程
         Thread threadC = new Thread(new Runnable() {
             public void run() {
                 synchronized (resourceA) {
                     System.out.println("threadC begin notify");
-                    //resourceA.notifyAll();
+                    // resourceA.notifyAll();
                     resourceA.notify();
                 }
             }
         });
 
-        //4. 启动线程
+        // 4. 启动线程
         threadA.start();
         threadB.start();
         Thread.sleep(1000);
         threadC.start();
 
-        //4. 等待线程结束
+        // 4. 等待线程结束
         threadA.join();
         threadB.join();
         threadC.join();

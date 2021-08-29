@@ -9,12 +9,12 @@ public class WaitNotifyInterupt {
 
     public static void main(String[] args) throws InterruptedException {
 
-        //1.创建线程
+        // 1.创建线程
         Thread threadA = new Thread(new Runnable() {
             public void run() {
                 try {
                     System.out.println("---begin---");
-                    //阻塞当前线程
+                    // 阻塞当前线程
                     obj.wait();
                     System.out.println("---end---");
 

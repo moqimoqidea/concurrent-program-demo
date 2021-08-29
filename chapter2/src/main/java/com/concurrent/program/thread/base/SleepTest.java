@@ -9,12 +9,12 @@ import java.util.concurrent.locks.ReentrantLock;
 public class SleepTest {
 
 
-    //1. 创建一个独占锁
+    // 1. 创建一个独占锁
     private static final Lock lock = new ReentrantLock();
 
     public static void main(String[] args) throws InterruptedException {
 
-        //2. 创建线程A
+        // 2. 创建线程A
         Thread threadA = new Thread(new Runnable() {
             public void run() {
                 // 获取独占锁
@@ -33,7 +33,7 @@ public class SleepTest {
             }
         });
 
-        //2. 创建线程B
+        // 2. 创建线程B
         Thread threadB = new Thread(new Runnable() {
             public void run() {
                 // 获取独占锁

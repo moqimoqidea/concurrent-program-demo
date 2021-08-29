@@ -27,7 +27,7 @@ public class TestUnSafeByReflect {
             // 获取该变量的值
             unsafe = (Unsafe) field.get(null);
 
-            //获取state在TestUnSafe中的偏移量
+            // 获取state在TestUnSafe中的偏移量
             stateOffset = unsafe.objectFieldOffset(TestUnSafeByReflect.class.getDeclaredField("state"));
 
         } catch (Exception ex) {

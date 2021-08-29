@@ -7,12 +7,12 @@ import java.util.concurrent.locks.ReentrantLock;
  * Created on 2020-08-29
  */
 public class ReentrantLockList {
-    //线程不安全的list
+    // 线程不安全的list
     private ArrayList<String> array = new ArrayList<String>();
-    //独占锁
+    // 独占锁
     private volatile ReentrantLock lock = new ReentrantLock();
 
-    //添加元素
+    // 添加元素
     public void add(String e) {
 
         lock.lock();
@@ -25,7 +25,7 @@ public class ReentrantLockList {
         }
     }
 
-    //删元素
+    // 删元素
     public void remove(String e) {
 
         lock.lock();
@@ -38,7 +38,7 @@ public class ReentrantLockList {
         }
     }
 
-    //获取数据
+    // 获取数据
     public String get(int index) {
 
         lock.lock();

@@ -26,7 +26,7 @@ public class TestSimpleDateFormat2 {
                     } catch (ParseException e) {
                         e.printStackTrace();
                     } finally {
-                        //(4)使用完毕记得清除，避免内存泄露
+                        // (4)使用完毕记得清除，避免内存泄露
                         safeSdf.remove();
                     }
                 }

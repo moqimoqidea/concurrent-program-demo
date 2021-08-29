@@ -5,7 +5,7 @@ package com.concurrent.program.thread.base;
  */
 public class JoinDemo {
     public static void main(String[] args) throws InterruptedException {
-        //1.创建线程1，模拟执行任务
+        // 1.创建线程1，模拟执行任务
         Thread threadOne = new Thread(new Runnable() {
 
             @Override
@@ -21,7 +21,7 @@ public class JoinDemo {
             }
         });
 
-        //2.创建线程2，模拟执行任务
+        // 2.创建线程2，模拟执行任务
         Thread threadTwo = new Thread(new Runnable() {
 
             @Override
@@ -40,13 +40,13 @@ public class JoinDemo {
         });
 
 
-        //3.两个线程执行
+        // 3.两个线程执行
         threadOne.start();
         threadTwo.start();
 
         System.out.println("wait all child thread over!");
 
-        //3.等待子线程执行完毕，返回
+        // 3.等待子线程执行完毕，返回
         threadOne.join();
         threadTwo.join();
 

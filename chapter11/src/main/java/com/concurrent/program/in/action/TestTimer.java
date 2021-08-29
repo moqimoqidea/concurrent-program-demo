@@ -7,11 +7,11 @@ import java.util.TimerTask;
  * Created on 2020-08-29
  */
 public class TestTimer {
-    //创建定时器对象
+    // 创建定时器对象
     static Timer timer = new Timer();
 
     public static void main(String[] args) {
-        //添加任务1,延迟500ms执行
+        // 添加任务1,延迟500ms执行
         timer.schedule(new TimerTask() {
 
             @Override
@@ -25,7 +25,7 @@ public class TestTimer {
                 throw new RuntimeException("error ");
             }
         }, 500);
-        //添加任务2，延迟1000ms执行
+        // 添加任务2，延迟1000ms执行
         timer.schedule(new TimerTask() {
 
             @Override

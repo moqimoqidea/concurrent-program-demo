@@ -16,14 +16,14 @@ public class ThreadPoolNoName {
 
     public static void main(String[] args) {
 
-        //接受用户链接模块
+        // 接受用户链接模块
         executorOne.execute(new Runnable() {
             public void run() {
                 System.out.println("接受用户链接线程");
                 throw new NullPointerException();
             }
         });
-        //具体处理用户请求模块
+        // 具体处理用户请求模块
         executorTwo.execute(new Runnable() {
             public void run() {
                 System.out.println("具体处理业务请求线程");

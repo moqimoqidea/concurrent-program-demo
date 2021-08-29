@@ -69,7 +69,7 @@ public class DeepCopyRight {
 
     public static void main(String[] args) {
 
-        //注册
+        // 注册
         serviceMap.put(111, new StrategyOneService());
         serviceMap.put(222, new StrategyTwoService());
 
@@ -98,14 +98,14 @@ public class DeepCopyRight {
         Map<Integer, List<Msg>> appKeyMsgMap = new HashMap<Integer, List<Msg>>();
         while (appKeyItr.hasNext()) {
 
-            //拷贝每个消息到临时消息列表
+            // 拷贝每个消息到临时消息列表
             List<Msg> tempList = new ArrayList<Msg>();
             Iterator<Msg> itrMsg = msgList.iterator();
             while (itrMsg.hasNext()) {
 
                 Msg tmpMsg = new Msg();
                 try {
-                    //使用BeanUtils.cloneBean对Msg对象进行属性拷贝
+                    // 使用BeanUtils.cloneBean对Msg对象进行属性拷贝
                     // tmpMsg = (Msg) BeanUtils.cloneBean(itrMsg.next());
                     BeanUtils.copyProperties(tmpMsg, itrMsg.next());
                 } catch (Exception e) {
@@ -116,7 +116,7 @@ public class DeepCopyRight {
 
                 }
             }
-            //存放当前appkey对应的经过深拷贝的消息列表
+            // 存放当前appkey对应的经过深拷贝的消息列表
             appKeyMsgMap.put(appKeyItr.next(), tempList);
         }
 

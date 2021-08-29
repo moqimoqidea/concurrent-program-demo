@@ -5,7 +5,7 @@ package com.concurrent.program.in.action;
  */
 public class ThreadNoName {
     public static void main(String[] args) {
-        //订单模块
+        // 订单模块
         Thread threadOne = new Thread(new Runnable() {
             public void run() {
                 System.out.println("保存订单的线程");
@@ -17,7 +17,7 @@ public class ThreadNoName {
                 throw new NullPointerException();
             }
         });
-        //发货模块
+        // 发货模块
         Thread threadTwo = new Thread(new Runnable() {
             public void run() {
                 System.out.println("保存收获地址的线程");

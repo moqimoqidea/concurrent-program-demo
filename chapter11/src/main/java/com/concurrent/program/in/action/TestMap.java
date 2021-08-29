@@ -9,11 +9,11 @@ import com.alibaba.fastjson.JSON;
 /**
  * Hello world!
  */
-public class TestMap {//(1)创建map,key为topic,value为设备列表
+public class TestMap {// (1)创建map,key为topic,value为设备列表
     static ConcurrentHashMap<String, CopyOnWriteArrayList<String>> map = new ConcurrentHashMap<>();
 
     public static void main(String[] args) {
-        //(2)进入直播间topic1 线程one
+        // (2)进入直播间topic1 线程one
         Thread threadOne = new Thread(new Runnable() {
             public void run() {
                 CopyOnWriteArrayList<String> list1 = new CopyOnWriteArrayList<>();
@@ -24,7 +24,7 @@ public class TestMap {//(1)创建map,key为topic,value为设备列表
                 System.out.println(JSON.toJSONString(map));
             }
         });
-        //(3)进入直播间topic1 线程two
+        // (3)进入直播间topic1 线程two
         Thread threadTwo = new Thread(new Runnable() {
             public void run() {
                 CopyOnWriteArrayList<String> list1 = new CopyOnWriteArrayList<>();
@@ -37,7 +37,7 @@ public class TestMap {//(1)创建map,key为topic,value为设备列表
             }
         });
 
-        //(4)进入直播间topic2 线程three
+        // (4)进入直播间topic2 线程three
         Thread threadThree = new Thread(new Runnable() {
             public void run() {
                 CopyOnWriteArrayList<String> list1 = new CopyOnWriteArrayList<>();
@@ -50,7 +50,7 @@ public class TestMap {//(1)创建map,key为topic,value为设备列表
             }
         });
 
-        //(5)启动线程
+        // (5)启动线程
         threadOne.start();
         threadTwo.start();
         threadThree.start();

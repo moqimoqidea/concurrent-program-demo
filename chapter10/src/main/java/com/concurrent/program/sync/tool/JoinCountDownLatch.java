@@ -12,7 +12,7 @@ public class JoinCountDownLatch {
 
     public static void main(String[] args) throws InterruptedException {
 
-        //1.创建线程one
+        // 1.创建线程one
         Thread threadOne = new Thread(new Runnable() {
 
             @Override
