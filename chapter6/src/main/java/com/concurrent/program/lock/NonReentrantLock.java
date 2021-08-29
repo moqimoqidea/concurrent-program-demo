@@ -6,7 +6,7 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 
 /**
- * Hello world!
+ * 手动实现的不可重入锁
  */
 class NonReentrantLock implements Lock, java.io.Serializable {
 
@@ -75,4 +75,5 @@ class NonReentrantLock implements Lock, java.io.Serializable {
     public boolean tryLock(long timeout, TimeUnit unit) throws InterruptedException {
         return sync.tryAcquireNanos(1, unit.toNanos(timeout));
     }
+
 }
