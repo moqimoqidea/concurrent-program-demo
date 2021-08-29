@@ -3,6 +3,7 @@ import spock.lang.Specification
 
 import java.util.concurrent.Callable
 import java.util.concurrent.FutureTask
+import java.util.concurrent.TimeUnit
 
 @Slf4j
 class ThreadTest extends Specification {
@@ -12,7 +13,7 @@ class ThreadTest extends Specification {
     def 'extend Thread class and override run method'() {
         when:
         new MyThread().start()
-        Thread.sleep(1000)
+        TimeUnit.SECONDS.sleep(1)
 
         then:
         number == 1
@@ -29,7 +30,7 @@ class ThreadTest extends Specification {
     def 'implements Runnable interface and override run method'() {
         when:
         new Thread(new RunnableTask()).start()
-        Thread.sleep(1000)
+        TimeUnit.SECONDS.sleep(1)
 
         then:
         number == 2
