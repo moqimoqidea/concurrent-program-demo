@@ -1,7 +1,7 @@
 package com.concurrent.program.thread.base;
 
 /**
- *  * Created on 2020-08-29
+ * Created on 2020-08-29
  * 每个共享变量都有一个set集合,当线程调用该共享对象的wait()方法时候，会把当前线程放入该共享变量的等待集合里面，当前线程只会释放当前共享对象的锁，如果当前线程还持有其它共享对象的监视器锁，那么当前线程在synchronized块内等待时候还是持有这些共享对象的监视器锁的
  */
 public class HoldMonitorLockTest {

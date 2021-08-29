@@ -3,7 +3,7 @@ package org.example;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- *  * Created on 2020-08-29
+ * Created on 2020-08-29
  */
 public class ThreadLocalRandomTest {
     public static void main(String[] args) {

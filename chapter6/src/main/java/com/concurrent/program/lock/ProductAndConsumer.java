@@ -5,7 +5,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.locks.Condition;
 
 /**
- *  * Created on 2020-08-29
+ * Created on 2020-08-29
  */
 public class ProductAndConsumer {
     final static NonReentrantLock lock = new NonReentrantLock();

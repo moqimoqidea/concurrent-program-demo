@@ -1,7 +1,7 @@
 package com.concurrent.program.in.action;
 
 /**
- *  * Created on 2020-08-29
+ * Created on 2020-08-29
  */
 public class ThreadNoName {
     public static void main(String[] args) {

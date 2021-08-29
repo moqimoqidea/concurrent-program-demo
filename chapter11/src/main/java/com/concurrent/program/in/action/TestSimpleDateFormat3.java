@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 /**
- *  * Created on 2020-08-29
+ * Created on 2020-08-29
  */
 public class TestSimpleDateFormat3 {
     // (1)创建单例实例

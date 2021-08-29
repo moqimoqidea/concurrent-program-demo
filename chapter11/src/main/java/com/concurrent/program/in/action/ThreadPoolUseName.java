@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- *  * Created on 2020-08-29
+ * Created on 2020-08-29
  */
 public class ThreadPoolUseName {
     static ThreadPoolExecutor executorOne =

@@ -1,7 +1,7 @@
 package com.concurrent.program.thread.base;
 
 /**
- *  * Created on 2020-08-29
+ * Created on 2020-08-29
  */
 public class InterruptFlagTest2 {
     public static void main(String[] args) throws InterruptedException {

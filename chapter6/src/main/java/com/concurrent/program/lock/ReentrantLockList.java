@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- *  * Created on 2020-08-29
+ * Created on 2020-08-29
  */
 public class ReentrantLockList {
     //线程不安全的list

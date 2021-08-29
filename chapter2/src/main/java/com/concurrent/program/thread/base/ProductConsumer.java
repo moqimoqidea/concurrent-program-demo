@@ -5,7 +5,7 @@ import java.util.Queue;
 import java.util.Random;
 
 /**
- *  * Created on 2020-08-29
+ * Created on 2020-08-29
  */
 public class ProductConsumer {
     //共享队列
