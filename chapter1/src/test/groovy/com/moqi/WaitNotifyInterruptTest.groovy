@@ -6,7 +6,7 @@ import spock.lang.Specification
 import java.util.concurrent.TimeUnit
 
 @Slf4j
-class WaitNotifyInterruptTest extends Specification {
+class WaitNotifyInterruptTest extends Specification{
 
     private static final Object resource = new Object()
     private static int number = 0
@@ -37,5 +37,4 @@ class WaitNotifyInterruptTest extends Specification {
         then:
         number == 1
     }
-
 }

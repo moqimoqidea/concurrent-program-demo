@@ -57,4 +57,29 @@ class SleepTest extends Specification {
         then:
         true
     }
+
+    def "interrupt sleep thread"() {
+        when:
+        Thread thread = new Thread(() -> {
+            try {
+                log.info("child thread is in sleep")
+                TimeUnit.SECONDS.sleep(10)
+                log.info("child thread is in awake")
+            } catch (InterruptedException e) {
+                log.warn(e.getMessage())
+            }
+        })
+
+        //2.启动线程
+        thread.start()
+
+        //3.主线程休眠2s
+        TimeUnit.SECONDS.sleep(2)
+
+        //4.主线程中断子线程
+        thread.interrupt()
+
+        then:
+        true
+    }
 }
