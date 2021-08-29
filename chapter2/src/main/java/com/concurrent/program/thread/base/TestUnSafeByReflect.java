@@ -1,23 +1,21 @@
 package com.concurrent.program.thread.base;
 
-import java.lang.reflect.Field;
-
 import sun.misc.Unsafe;
+
+import java.lang.reflect.Field;
 
 /**
  * Created on 2020-08-29
  */
 public class TestUnSafeByReflect {
+
     static final Unsafe unsafe;
 
     static final long stateOffset;
 
-    private volatile long state = 0;
-
     static {
 
         try {
-
             // 反射获取Unsafe的成员变量theUnsafe
             Field field = Unsafe.class.getDeclaredField("theUnsafe");
 
@@ -29,7 +27,7 @@ public class TestUnSafeByReflect {
 
             // 获取state在TestUnSafe中的偏移量
             stateOffset = unsafe.objectFieldOffset(TestUnSafeByReflect.class.getDeclaredField("state"));
-
+            System.out.println("stateOffset = " + stateOffset);
         } catch (Exception ex) {
 
             System.out.println(ex.getLocalizedMessage());
@@ -38,12 +36,16 @@ public class TestUnSafeByReflect {
 
     }
 
+    private final long state = 0;
+
+    /**
+     * stateOffset = 16
+     * true
+     */
     public static void main(String[] args) {
-
         TestUnSafeByReflect test = new TestUnSafeByReflect();
-        Boolean sucess = unsafe.compareAndSwapInt(test, stateOffset, 0, 1);
-        System.out.println(sucess);
-
+        Boolean success = unsafe.compareAndSwapInt(test, stateOffset, 0, 1);
+        System.out.println(success);
     }
 
 }
