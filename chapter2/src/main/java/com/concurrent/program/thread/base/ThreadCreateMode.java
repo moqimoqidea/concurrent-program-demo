@@ -1,31 +1,14 @@
 package com.concurrent.program.thread.base;
 
 import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
 /**
  * 创建线程的方法
- *
- *  * Created on 2020-08-29
+ * <p>
+ * Created on 2020-08-29
  */
 public class ThreadCreateMode {
-
-    //继承Thread类并重写run方法
-    public static class MyThread extends Thread {
-
-        @Override
-        public void run() {
-            System.out.println("I am a child thread:" + Thread.currentThread().getName());
-        }
-    }
-
-    public static class RunnableTask implements Runnable {
-        @Override
-        public void run() {
-            System.out.println("I am a child thread:" + Thread.currentThread().getName());
-        }
-    }
 
     private static void threadMode() {
         // 创建线程
@@ -40,17 +23,6 @@ public class ThreadCreateMode {
         new Thread(task).start();
 
     }
-
-    public static class CallerTask implements Callable<String> {
-
-        @Override
-        public String call() throws Exception {
-
-            return "hello";
-        }
-
-    }
-
 
     public static void callerTaskMode() {
         // 创建异步任务
@@ -77,6 +49,32 @@ public class ThreadCreateMode {
 
         //3.CallerTask
         callerTaskMode();
+
+    }
+
+    //继承Thread类并重写run方法
+    public static class MyThread extends Thread {
+
+        @Override
+        public void run() {
+            System.out.println("I am a child thread:" + Thread.currentThread().getName());
+        }
+    }
+
+    public static class RunnableTask implements Runnable {
+        @Override
+        public void run() {
+            System.out.println("I am a child thread:" + Thread.currentThread().getName());
+        }
+    }
+
+    public static class CallerTask implements Callable<String> {
+
+        @Override
+        public String call() {
+
+            return "hello";
+        }
 
     }
 }
