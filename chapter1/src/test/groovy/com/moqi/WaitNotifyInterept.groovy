@@ -6,32 +6,32 @@ import spock.lang.Specification
 import java.util.concurrent.TimeUnit
 
 @Slf4j
-class WaitNotifyInterrupt extends Specification {
+class WaitNotifyInterruptTest extends Specification {
 
     private static final Object resource = new Object()
     private static int number = 0
 
     def "if wait thread be interrupt will thrown exception"() {
         when:
-        Thread threadA = new Thread(() -> {
-            try {
-                log.info("---begin---")
-                synchronized (resource) {
+        Thread A = new Thread(() -> {
+            log.info("---begin---")
+            synchronized (resource) {
+                try {
                     resource.wait()
+                } catch (InterruptedException e) {
+                    log.warn(e.printStackTrace())
+                    number = 1
                 }
-                log.info("---end---")
-            } catch (InterruptedException e) {
-                log.warn(e.printStackTrace())
-                number = 1
             }
+            log.info("---end---")
         })
 
         and:
-        threadA.start()
+        A.start()
         TimeUnit.SECONDS.sleep(1)
-        log.info("---begin interrupt threadA---")
-        threadA.interrupt()
-        log.info("---end interrupt threadA---")
+        log.info("---begin interrupt A---")
+        A.interrupt()
+        log.info("---end interrupt A---")
         TimeUnit.SECONDS.sleep(1)
 
         then:

@@ -24,7 +24,7 @@ class ThreadTest extends Specification {
     private static class MyThread extends Thread {
         @Override
         void run() {
-            log.info('MyThread Run')
+            log.info("MyThread Run")
             number = 1
         }
     }
@@ -41,7 +41,7 @@ class ThreadTest extends Specification {
     private static class RunnableTask implements Runnable {
         @Override
         void run() {
-            log.info('RunnableTask Run')
+            log.info("RunnableTask Run")
             number = 2
         }
     }
@@ -59,7 +59,7 @@ class ThreadTest extends Specification {
     private static class CallerTask implements Callable<Integer> {
         @Override
         Integer call() {
-            log.info('CallerTask Run')
+            log.info("CallerTask Run")
             return 3
         }
     }
