@@ -26,7 +26,7 @@ class DoubleLockTest extends Specification {
                         log.info("A release resourceA lock")
                         resourceA.wait()
                     } catch (InterruptedException e) {
-                        log.warn(e.getMessage())
+                        log.warn(e.printStackTrace())
                     }
                 }
             }
@@ -43,7 +43,7 @@ class DoubleLockTest extends Specification {
                         log.info("B release resourceA lock")
                         resourceA.wait()
                     } catch (InterruptedException e) {
-                        log.warn(e.getMessage())
+                        log.warn(e.printStackTrace())
                     }
                 }
             }

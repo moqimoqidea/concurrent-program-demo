@@ -21,7 +21,7 @@ class NotifyAllTest extends Specification {
                 resource.wait()
                 log.info("A end wait")
             } catch (InterruptedException e) {
-                log.warn(e.getMessage())
+                log.warn(e.printStackTrace())
             }
         }
     })
@@ -35,7 +35,7 @@ class NotifyAllTest extends Specification {
                 resource.wait()
                 log.info("B end wait")
             } catch (InterruptedException e) {
-                log.warn(e.getMessage())
+                log.warn(e.printStackTrace())
             }
         }
     })
