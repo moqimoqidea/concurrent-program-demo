@@ -6,51 +6,54 @@ package com.concurrent.program.thread.base;
 public class DeadLockBrokenTest {
 
     // 1. 创建共享资源
-    private static Object resourceA = new Object();
-    private static Object resourceB = new Object();
+    private static final Object resourceA = new Object();
+    private static final Object resourceB = new Object();
 
+    /**
+     * Thread[Thread-0,5,main] get ResourceA
+     * Thread[Thread-0,5,main]waiting get ResourceB
+     * Thread[Thread-0,5,main]get ResourceB
+     * Thread[Thread-1,5,main] get ResourceA
+     * Thread[Thread-1,5,main]waiting get ResourceB
+     * Thread[Thread-1,5,main]get ResourceB
+     */
     public static void main(String[] args) {
 
         // 2. 创建线程A
-        Thread threadA = new Thread(new Runnable() {
-            public void run() {
-                // 2.1获取资源A的锁
-                synchronized (resourceA) {
-                    System.out.println(Thread.currentThread() + " get ResourceA");
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+        Thread threadA = new Thread(() -> {
+            // 2.1获取资源A的锁
+            synchronized (resourceA) {
+                System.out.println(Thread.currentThread() + " get ResourceA");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
-                    // 2.1获取资源B的锁
-                    System.out.println(Thread.currentThread() + "waiting get ResourceB");
-                    synchronized (resourceB) {
-                        System.out.println(Thread.currentThread() + "get ResourceB");
-                    }
+                // 2.1获取资源B的锁
+                System.out.println(Thread.currentThread() + "waiting get ResourceB");
+                synchronized (resourceB) {
+                    System.out.println(Thread.currentThread() + "get ResourceB");
                 }
             }
         });
 
         // 3. 创建线程B
-        Thread threadB = new Thread(new Runnable() {
-            public void run() {
-                // 3.1获取资源A的锁
-                synchronized (resourceA) {
-                    System.out.println(Thread.currentThread() + " get ResourceA");
+        Thread threadB = new Thread(() -> {
+            // 3.1获取资源A的锁
+            synchronized (resourceA) {
+                System.out.println(Thread.currentThread() + " get ResourceA");
 
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    // 3.2获取资源B的锁
-                    System.out.println(Thread.currentThread() + "waiting get ResourceB");
-                    synchronized (resourceA) {
-                        System.out.println(Thread.currentThread() + "get ResourceB");
-                    }
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
-                ;
+                // 3.2获取资源B的锁
+                System.out.println(Thread.currentThread() + "waiting get ResourceB");
+                synchronized (resourceA) {
+                    System.out.println(Thread.currentThread() + "get ResourceB");
+                }
             }
         });
 
