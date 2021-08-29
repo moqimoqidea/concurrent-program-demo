@@ -1,14 +1,15 @@
 package com.concurrent.program.thread.base;
 
 /**
- *  * Created on 2020-08-29
+ * * Created on 2020-08-29
  */
 public class YieldTest implements Runnable {
 
-    YieldTest() {
+    public static void main(String[] args) {
         //创建并启动线程
-        Thread t = new Thread(this);
-        t.start();
+        new Thread(new YieldTest()).start();
+        new Thread(new YieldTest()).start();
+        new Thread(new YieldTest()).start();
     }
 
     public void run() {
@@ -18,17 +19,11 @@ public class YieldTest implements Runnable {
             if ((i % 5) == 0) {
                 System.out.println(Thread.currentThread() + "yield cpu...");
                 //当前 出让cpu执行权，放弃时间片，进行下一轮调度
-                // Thread.yield();
+                Thread.yield();
             }
         }
 
         System.out.println(Thread.currentThread() + " is over");
-    }
-
-    public static void main(String[] args) {
-        new YieldTest();
-        new YieldTest();
-        new YieldTest();
     }
 }
 
