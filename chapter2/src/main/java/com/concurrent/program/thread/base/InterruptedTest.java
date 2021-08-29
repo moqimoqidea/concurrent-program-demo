@@ -7,15 +7,11 @@ public class InterruptedTest {
     public static void main(String[] args) throws InterruptedException {
 
         // 1.创建线程
-        Thread thread = new Thread(new Runnable() {
+        Thread thread = new Thread(() -> {
 
-            @Override
-            public void run() {
-
-                // 如果当前线程被中断则退出循环
-                while (!Thread.currentThread().isInterrupted()) {
-                    System.out.println(Thread.currentThread() + " hello");
-                }
+            // 如果当前线程被中断则退出循环
+            while (!Thread.currentThread().isInterrupted()) {
+                System.out.println(Thread.currentThread() + " hello");
             }
         });
 
