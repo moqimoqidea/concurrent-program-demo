@@ -4,11 +4,21 @@ package com.concurrent.program.thread.base;
  * Created on 2020-08-29
  */
 public class InterruptedTest {
-    public static void main(String[] args) throws InterruptedException {
 
+    /**
+     * Thread[Thread-0,5,main] hello
+     * ......
+     * Thread[Thread-0,5,main] hello
+     * Thread[Thread-0,5,main] hello
+     * Thread[Thread-0,5,main] hello
+     * Thread[Thread-0,5,main] hello
+     * main thread interrupt thread
+     * Thread[Thread-0,5,main] hello
+     * main is over
+     */
+    public static void main(String[] args) throws InterruptedException {
         // 1.创建线程
         Thread thread = new Thread(() -> {
-
             // 如果当前线程被中断则退出循环
             while (!Thread.currentThread().isInterrupted()) {
                 System.out.println(Thread.currentThread() + " hello");
@@ -27,6 +37,6 @@ public class InterruptedTest {
         // 4.等待子线程执行完毕
         thread.join();
         System.out.println("main is over");
-
     }
+
 }
