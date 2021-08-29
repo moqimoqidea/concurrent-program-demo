@@ -17,10 +17,17 @@ public class ThreadLocalTest {
     }
 
     /**
+     * default:
      * threadOne:threadOne local variable
      * threadTwo:threadTwo local variable
      * threadOne remove after:threadOne local variable
      * threadTwo remove after:threadTwo local variable
+     *
+     * open: localVariable.remove();
+     * threadOne:threadOne local variable
+     * threadTwo:threadTwo local variable
+     * threadOne remove after:null
+     * threadTwo remove after:null
      */
     public static void main(String[] args) {
 
