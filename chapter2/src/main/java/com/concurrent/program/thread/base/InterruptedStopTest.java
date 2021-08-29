@@ -5,6 +5,11 @@ package com.concurrent.program.thread.base;
  */
 public class InterruptedStopTest {
 
+    /**
+     * threadOne begin sleep for 2000 seconds
+     * threadOne is interrupted while sleeping
+     * main thread is over
+     */
     public static void main(String[] args) throws InterruptedException {
 
         // 1.创建线程
