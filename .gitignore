@@ -1,7 +1,4 @@
 *.iml
 .idea
 target
-
-# chapter1
-chapter1/.gradle
-chapter1/build
+.DS_Store
