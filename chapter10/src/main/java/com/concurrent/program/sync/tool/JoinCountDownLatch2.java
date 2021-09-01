@@ -8,37 +8,40 @@ import java.util.concurrent.Executors;
  * Created on 2020-08-29
  */
 public class JoinCountDownLatch2 {
-    // 创建一个CountDownLatch实例
-    private static volatile CountDownLatch countDownLatch = new CountDownLatch(2);
 
+    // 创建一个CountDownLatch实例
+    private static final CountDownLatch countDownLatch = new CountDownLatch(2);
+
+    /**
+     * wait all child thread over!
+     * child threadOne over!
+     * all child thread over!
+     * child threadTwo over!
+     */
     public static void main(String[] args) throws InterruptedException {
 
         ExecutorService executorService = Executors.newFixedThreadPool(2);
 
         // 加入线程A到线程池
-        executorService.submit(new  Runnable() {
-            public void run() {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                countDownLatch.countDown();
-                System.out.println("child threadOne over!");
+        executorService.submit(() -> {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
+            countDownLatch.countDown();
+            System.out.println("child threadOne over!");
         });
 
         // 加入线程B到线程池
-        executorService.submit(new  Runnable() {
-            public void run() {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                countDownLatch.countDown();
-                System.out.println("child threadTwo over!");
+        executorService.submit(() -> {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
+            countDownLatch.countDown();
+            System.out.println("child threadTwo over!");
         });
 
 

@@ -8,45 +8,43 @@ import java.util.concurrent.CountDownLatch;
 public class JoinCountDownLatch {
 
     // 创建一个CountDownLatch实例
-    private static volatile CountDownLatch countDownLatch = new CountDownLatch(2);
+    private static final CountDownLatch countDownLatch = new CountDownLatch(2);
 
+    /**
+     * wait all child thread over!
+     * child threadOne over!
+     * all child thread over!
+     * child threadTwo over!
+     */
     public static void main(String[] args) throws InterruptedException {
 
         // 1.创建线程one
-        Thread threadOne = new Thread(new Runnable() {
+        Thread threadOne = new Thread(() -> {
 
-            @Override
-            public void run() {
-
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }finally {
-                    countDownLatch.countDown();
-                    System.out.println("child threadOne over!");
-                }
-
-
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                countDownLatch.countDown();
+                System.out.println("child threadOne over!");
             }
+
+
         });
 
-        Thread threadTwo = new Thread(new Runnable() {
+        Thread threadTwo = new Thread(() -> {
 
-            @Override
-            public void run() {
+            try {
+                Thread.sleep(1000);
 
-                try {
-                    Thread.sleep(1000);
-
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }finally {
-                    countDownLatch.countDown();
-                    System.out.println("child threadTwo over!");
-                }
-
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                countDownLatch.countDown();
+                System.out.println("child threadTwo over!");
             }
+
         });
 
         // 启动子线程
