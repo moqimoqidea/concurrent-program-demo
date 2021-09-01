@@ -7,9 +7,17 @@ import java.util.TimerTask;
  * Created on 2020-08-29
  */
 public class TestTimer {
+
     // 创建定时器对象
     static Timer timer = new Timer();
 
+    /**
+     * ---one Task---
+     * Exception in thread "Timer-0" java.lang.RuntimeException: error
+     * 	at com.concurrent.program.in.action.TestTimer$1.run(TestTimer.java:26)
+     * 	at java.util.TimerThread.mainLoop(Timer.java:555)
+     * 	at java.util.TimerThread.run(Timer.java:505)
+     */
     public static void main(String[] args) {
         // 添加任务1,延迟500ms执行
         timer.schedule(new TimerTask() {

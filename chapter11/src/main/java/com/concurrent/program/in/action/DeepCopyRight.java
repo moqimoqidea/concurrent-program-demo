@@ -1,14 +1,9 @@
 package com.concurrent.program.in.action;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
+import com.alibaba.fastjson.JSON;
 import org.apache.commons.beanutils.BeanUtils;
 
-import com.alibaba.fastjson.JSON;
+import java.util.*;
 
 /**
  * Created on 2020-08-29
@@ -37,36 +32,10 @@ public class DeepCopyRight {
 
     }
 
-    public interface StrategyService {
-        public void sendMsg(List<Msg> msgList, List<String> deviceIdList);
-    }
-
-    public static class StrategyOneService implements StrategyService {
-
-        @Override
-        public void sendMsg(List<Msg> msgList, List<String> deviceIdList) {
-            for (Msg msg : msgList) {
-                msg.setDataId("oneService_" + msg.getDataId());
-                System.out.println(msg.getDataId() + " " + JSON.toJSONString(deviceIdList));
-            }
-        }
-    }
-
-    public static class StrategyTwoService implements StrategyService {
-
-        @Override
-        public void sendMsg(List<Msg> msgList, List<String> deviceIdList) {
-
-            for (Msg msg : msgList) {
-                msg.setDataId("TwoService_" + msg.getDataId());
-                System.out.println(msg.getDataId() + " " + JSON.toJSONString(deviceIdList));
-            }
-        }
-    }
-
-    // (1)不同appkey注册不同的服务
-    static Map<Integer, StrategyService> serviceMap = new HashMap<Integer, StrategyService>();
-
+    /**
+     * TwoService_null ["device_id2"]
+     * oneService_null ["device_id1"]
+     */
     public static void main(String[] args) {
 
         // 注册
@@ -132,5 +101,35 @@ public class DeepCopyRight {
                 System.out.println(String.format("appkey:%s, is not registerd service", appKey));
             }
         }
+    }
+
+    public static class StrategyOneService implements StrategyService {
+
+        @Override
+        public void sendMsg(List<Msg> msgList, List<String> deviceIdList) {
+            for (Msg msg : msgList) {
+                msg.setDataId("oneService_" + msg.getDataId());
+                System.out.println(msg.getDataId() + " " + JSON.toJSONString(deviceIdList));
+            }
+        }
+    }
+
+    public static class StrategyTwoService implements StrategyService {
+
+        @Override
+        public void sendMsg(List<Msg> msgList, List<String> deviceIdList) {
+
+            for (Msg msg : msgList) {
+                msg.setDataId("TwoService_" + msg.getDataId());
+                System.out.println(msg.getDataId() + " " + JSON.toJSONString(deviceIdList));
+            }
+        }
+    }
+
+    // (1)不同appkey注册不同的服务
+    static Map<Integer, StrategyService> serviceMap = new HashMap<Integer, StrategyService>();
+
+    public interface StrategyService {
+        void sendMsg(List<Msg> msgList, List<String> deviceIdList);
     }
 }
